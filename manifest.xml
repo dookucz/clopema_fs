@@ -1,0 +1,15 @@
+<package>
+  <description brief="clopema_fs">
+
+     clopema_fs
+
+  </description>
+  <author>Clopema Guest</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/clopema_fs</url>
+  <depend package="clopema_launch"/>
+
+</package>
+
+
