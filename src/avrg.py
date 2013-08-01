@@ -5,7 +5,6 @@ import numpy
 import math
 import scipy
 import sys
-from PyQt4 import QtGui
 
 def main():
 	print 'Loading force sensor data from file \'data\'... ',
@@ -72,29 +71,42 @@ def main():
 		start_time[i] -= measure_start
 		stop_time[i] -= measure_start
 		i += 1
-	print 'Plotting...'
-	# Here starts the plotting
-	win = pg.GraphicsWindow(title="Force and torque measure")
-	win.resize(1000,600)
-	win.setWindowTitle('Force and torque measure')
-	force_p = win.addPlot(title = 'Force measure')
-	force_p.plot(data_time,f_x, pen = 'r')
-	force_p.plot(data_time,f_y, pen = 'g')
-	force_p.plot(data_time,f_z, pen = 'b')
-	for time in start_time:
-		force_p.plot([time, time],[-40,20],pen = 'w')
-	for time in stop_time:
-		force_p.plot([time, time],[-40,20],pen = (100,100,100))
-	win.nextRow()
-	torque_p = win.addPlot(title = 'Torque measure')
-	torque_p.plot(data_time,m_x, pen = 'r')
-	torque_p.plot(data_time,m_y, pen = 'g')
-	torque_p.plot(data_time,m_z, pen = 'b')
-	for time in start_time:
-		torque_p.plot([time, time],[-2,2],pen = 'w')
-	for time in stop_time:
-		torque_p.plot([time, time],[-2,2],pen = (100,100,100))
-	QtGui.QApplication.instance().exec_()
+	# calculating avrg
+	start_pos = 0
+	stop_pos = 0
+	i = 0
+	while i < len(start_time)-1:
+		print 'Step ' + str(i+1)
+		print 'time: ' + str(stop_time[i]) + ' to ' + str(start_time[i+1])
 
+		j = start_pos
+		while data_time[j] < stop_time[i]:
+			j += 1
+		stop_pos = j
+		while data_time[j] < start_time[i+1]:
+			j += 1
+		start_pos = j
+		#print 'DEBUG: stop at index ' + str(stop_pos) + ', next start at index ' + str(start_pos)
+		# Force X
+		sum = 0.0
+		for val in f_x[stop_pos:start_pos]:
+			sum += val
+		avrg = sum / (start_pos - stop_pos)
+		print '\tAverage values for force:\n\t\tX = ' + str(avrg)
+		# Force Y
+		sum = 0.0
+		for val in f_y[stop_pos:start_pos]:
+			sum += val
+		avrg = sum / (start_pos - stop_pos)
+		print '\t\tY = ' + str(avrg)
+		# Force X
+		sum = 0.0
+		for val in f_z[stop_pos:start_pos]:
+			sum += val
+		avrg = sum / (start_pos - stop_pos)
+		print '\t\tZ = ' + str(avrg)
+		# doplnit momenty
+		i += 1
+		
 if __name__ == '__main__':
 	main()
