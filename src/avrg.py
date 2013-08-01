@@ -99,13 +99,30 @@ def main():
 			sum += val
 		avrg = sum / (start_pos - stop_pos)
 		print '\t\tY = ' + str(avrg)
-		# Force X
+		# Force Z
 		sum = 0.0
 		for val in f_z[stop_pos:start_pos]:
 			sum += val
 		avrg = sum / (start_pos - stop_pos)
 		print '\t\tZ = ' + str(avrg)
-		# doplnit momenty
+		# Torque X
+		sum = 0.0
+		for val in m_x[stop_pos:start_pos]:
+			sum += val
+		avrg = sum / (start_pos - stop_pos)
+		print '\tAverage values for torque:\n\t\tX = ' + str(avrg)
+		# Torque Y
+		sum = 0.0
+		for val in m_y[stop_pos:start_pos]:
+			sum += val
+		avrg = sum / (start_pos - stop_pos)
+		print '\t\tY = ' + str(avrg)
+		# Torque Z
+		sum = 0.0
+		for val in m_z[stop_pos:start_pos]:
+			sum += val
+		avrg = sum / (start_pos - stop_pos)
+		print '\t\tZ = ' + str(avrg)
 		i += 1
 		
 if __name__ == '__main__':
