@@ -1,4 +1,9 @@
 #!/usr/bin/env python
+#
+#   Spustit jako:
+#       rosrun clopema_fs prubezne_snimani.py | tee output
+#       view_data.py dostane ze souboru "output" potrebna data
+#
 import roslib; roslib.load_manifest('clopema_calibration')
 import rospy, smach, smach_ros, math, copy, tf, PyKDL, os, shutil, numpy
 from tf.transformations import quaternion_from_euler, quaternion_about_axis
