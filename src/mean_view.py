@@ -47,6 +47,7 @@ class RunningStatistic(object):
 def netf_cb(msg):
 	global count
 	global f
+	global fx_dir,fx_dir_curve
 	global fx_mean_curve,fx_std_curve
 	global fx_mean, fx_std
 	global fy_mean_curve,fy_std_curve
@@ -93,13 +94,18 @@ def netf_cb(msg):
 		if count >= VALS_PER_AVRG*MAX_DATA:
 			fx_mean = []
 			fx_std = []
+			fx_dir = []
 			print 'clearing'
 			count = 0
 		
 		if count%VALS_PER_AVRG == 0 and count != 0:
-			fx_std.append(avrg_x_std/VALS_PER_AVRG)
-			fx_mean.append(avrg_x_mean/VALS_PER_AVRG)
+			fx_dir.append(msg.wrench.force.x)
+			#fx_std.append(avrg_x_std/VALS_PER_AVRG)
+			#fx_mean.append(avrg_x_mean/VALS_PER_AVRG)
+			fx_mean.append(val[0])
+			fx_std.append(val[1])
 			fx_std_curve.setData(fx_std)
+			fx_dir_curve.setData(fx_dir)
 			fx_mean_curve.setData(fx_mean)
 			avrg_x_std = 0
 			avrg_x_mean = 0
@@ -122,6 +128,8 @@ def main():
 	global fx_mean,fx_std
 	global fy_mean,fy_std
 	global fz_mean,fz_std
+	global fx_dir
+	global fx_dir_curve
 	global fx_mean_curve,fx_std_curve
 	global fy_mean_curve,fy_std_curve
 	global fz_mean_curve,fz_std_curve
@@ -131,6 +139,7 @@ def main():
 	global avrg_y_mean, avrg_y_std
 	global avrg_z_mean, avrg_z_std
 
+	avrg_x_dir = 0.0
 	avrg_x_mean = 0.0
 	avrg_x_std = 0.0
 	avrg_y_mean = 0.0
@@ -144,9 +153,10 @@ def main():
 	Ty = RunningStatistic(int(sys.argv[1]))
 	Tz = RunningStatistic(int(sys.argv[1]))
 	
-	MAX_DATA = 500
+	MAX_DATA = 2000
 	count = 0
 	rospy.init_node('sm_test')
+	fx_dir = []
 	fx_mean = []
 	fx_std = []
 	fy_mean = []
@@ -160,10 +170,11 @@ def main():
 		def_data.append(0)
 		i += 1
 	win = pg.GraphicsWindow(title="Mean and std deviation")
-	win.resize(1000,600)
+	win.resize(1600,600)
 	win.setWindowTitle('Mean and std deviation')
 	mean_row = win.addPlot(title = 'mean')
 	fx_mean_curve = mean_row.plot(def_data, pen = 'r')
+	fx_dir_curve = mean_row.plot(def_data,pen = (100,100,100))
 	mean_row.enableAutoRange('x', False)
 	win.nextRow()
 	std_row = win.addPlot(title = 'std')
