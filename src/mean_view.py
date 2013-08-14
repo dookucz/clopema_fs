@@ -60,16 +60,36 @@ def netf_cb(msg):
 	global avrg_y_mean, avrg_y_std
 	global avrg_z_mean, avrg_z_std
 
-	VALS_PER_AVRG = 10.0
+	VALS_PER_AVRG = 10
+	Y_RANGE = 5.0
 
 	Fy.add(msg.wrench.force.y)
 	Fz.add(msg.wrench.force.z)
 	val = Fx.add(msg.wrench.force.x)
 	if math.fabs(val[0]) > 0.001:
 		if count == 0:
-			print 'data loaded.'
-			#sem dat nastaveni rozsahu y-ove osy; pri zjisteni prvni hodnoty
-			
+			print 'Data loaded'
+			# zakomentovane nastaveni rozsahu y-osy
+			# def_data = []
+			# i = 0
+			# while i < MAX_DATA:
+			# 	if i < MAX_DATA/2:
+			# 		def_data.append(val[0]-Y_RANGE/2)
+			# 	else:
+			# 		def_data.append(val[0]+Y_RANGE/2)
+			# 	i += 1
+			# fx_mean_curve.setData(def_data)
+			# mean_row.enableAutoRange('xy', False)
+			# i = 0
+			# while i < MAX_DATA:
+			# 	if i < MAX_DATA/2:
+			# 		def_data.append(val[1]-Y_RANGE/2)
+			# 	else:
+			# 		def_data.append(val[1]+Y_RANGE/2)
+			# 	i += 1
+			# fx_std_curve.setData(def_data)
+			# std_row.enableAutoRange('xy', False)
+
 		if count >= VALS_PER_AVRG*MAX_DATA:
 			fx_mean = []
 			fx_std = []
@@ -109,8 +129,8 @@ def main():
 	global avrg_y_mean, avrg_y_std
 	global avrg_z_mean, avrg_z_std
 
-	avrg_y_mean = 0
-	avrg_x_std = 0
+	avrg_y_mean = 0.0
+	avrg_x_std = 0.0
 	Fx = RunningStatistic(int(sys.argv[1]))
 	Fy = RunningStatistic(int(sys.argv[1]))
 	Fz = RunningStatistic(int(sys.argv[1]))
@@ -144,7 +164,7 @@ def main():
 	#f.write('mean; var\n')
 	
 	rospy.Subscriber('/netft_data',WrenchStamped,netf_cb)
-	print 'Waiting for data... '
+	print 'Waiting for data'
 	QtGui.QApplication.instance().exec_()
 	rospy.spin()
 	#f.close()
