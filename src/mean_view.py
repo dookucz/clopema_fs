@@ -5,7 +5,8 @@ from tf.transformations import quaternion_from_euler, quaternion_about_axis
 from tf_conversions import posemath
 from geometry_msgs.msg import *
 from clopema_planning_actions.msg import MA1400JointState
-import sysimport pyqtgraph as pg
+import sys
+import pyqtgraph as pg
 from PyQt4 import QtGui
 
 
