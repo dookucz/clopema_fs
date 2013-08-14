@@ -47,30 +47,45 @@ class RunningStatistic(object):
 def netf_cb(msg):
 	global count
 	global f
-	global fx_mean_curve
-	global fx_std_curve
+	global fx_mean_curve,fx_std_curve
 	global fx_mean, fx_std
+	global fy_mean_curve,fy_std_curve
+	global fy_mean, fy_std
+	global fz_mean_curve,fz_std_curve
+	global fz_mean, fz_std
+	global std_row,mean_row
 	global MAX_DATA
 	global Fx, Fy, Fz, Tx, Ty, Tz
+	global avrg_x_mean, avrg_x_std
+	global avrg_y_mean, avrg_y_std
+	global avrg_z_mean, avrg_z_std
 
+	VALS_PER_AVRG = 10.0
+
+	Fy.add(msg.wrench.force.y)
+	Fz.add(msg.wrench.force.z)
 	val = Fx.add(msg.wrench.force.x)
 	if math.fabs(val[0]) > 0.001:
 		if count == 0:
 			print 'data loaded.'
-				
+			#sem dat nastaveni rozsahu y-ove osy; pri zjisteni prvni hodnoty
 			
-		if count >= MAX_DATA:
+		if count >= VALS_PER_AVRG*MAX_DATA:
 			fx_mean = []
 			fx_std = []
 			print 'clearing'
 			count = 0
-			
-
-		val = Fx.add(msg.wrench.force.x)
-		fx_std.append(val[1])
-		fx_mean.append(val[0])
-		fx_std_curve.setData(fx_std)
-		fx_mean_curve.setData(fx_mean)
+		
+		if count%VALS_PER_AVRG == 0 and count != 0:
+			fx_std.append(avrg_x_std/VALS_PER_AVRG)
+			fx_mean.append(avrg_x_mean/VALS_PER_AVRG)
+			fx_std_curve.setData(fx_std)
+			fx_mean_curve.setData(fx_mean)
+			avrg_x_std = 0
+			avrg_x_mean = 0
+		
+		avrg_x_mean += val[0]
+		avrg_x_std += val[1]
 		count += 1
 
 		#f.write("%15.5f" % msg.header.stamp.to_sec() + ";")
@@ -88,8 +103,14 @@ def main():
 	global fx_std
 	global fx_mean_curve
 	global fx_std_curve
+	global std_row,mean_row
 	global Fx, Fy, Fz, Tx, Ty, Tz 
-	
+	global avrg_x_mean, avrg_x_std
+	global avrg_y_mean, avrg_y_std
+	global avrg_z_mean, avrg_z_std
+
+	avrg_y_mean = 0
+	avrg_x_std = 0
 	Fx = RunningStatistic(int(sys.argv[1]))
 	Fy = RunningStatistic(int(sys.argv[1]))
 	Fz = RunningStatistic(int(sys.argv[1]))
@@ -103,14 +124,10 @@ def main():
 	fx_mean = []
 	fx_std = []
 	def_data = []
-	y_len = 10.0
 	# init default data - for aspect ratio
 	i = 0
 	while i < MAX_DATA:
-		if i > MAX_DATA/2:
-			def_data.append(-y_len/2-9)
-		else:
-			def_data.append(y_len/2-9)
+		def_data.append(0)
 		i += 1
 	win = pg.GraphicsWindow(title="Mean and std deviation")
 	win.resize(1000,600)
