@@ -119,18 +119,24 @@ def main():
 	global f
 	global count
 	global MAX_DATA
-	global fx_mean
-	global fx_std
-	global fx_mean_curve
-	global fx_std_curve
+	global fx_mean,fx_std
+	global fy_mean,fy_std
+	global fz_mean,fz_std
+	global fx_mean_curve,fx_std_curve
+	global fy_mean_curve,fy_std_curve
+	global fz_mean_curve,fz_std_curve
 	global std_row,mean_row
 	global Fx, Fy, Fz, Tx, Ty, Tz 
 	global avrg_x_mean, avrg_x_std
 	global avrg_y_mean, avrg_y_std
 	global avrg_z_mean, avrg_z_std
 
-	avrg_y_mean = 0.0
+	avrg_x_mean = 0.0
 	avrg_x_std = 0.0
+	avrg_y_mean = 0.0
+	avrg_y_std = 0.0
+	avrg_z_mean = 0.0
+	avrg_z_std = 0.0
 	Fx = RunningStatistic(int(sys.argv[1]))
 	Fy = RunningStatistic(int(sys.argv[1]))
 	Fz = RunningStatistic(int(sys.argv[1]))
@@ -143,6 +149,10 @@ def main():
 	rospy.init_node('sm_test')
 	fx_mean = []
 	fx_std = []
+	fy_mean = []
+	fy_std = []
+	fz_mean = []
+	fz_std = []
 	def_data = []
 	# init default data - for aspect ratio
 	i = 0
