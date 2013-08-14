@@ -49,6 +49,7 @@ class RunningStatistic(object):
 
 
 def netf_cb(msg):
+    global count
     global f
     global fx_mean_curve
     global fx_std_curve
@@ -71,9 +72,9 @@ def netf_cb(msg):
     f.write("%15.5f" % msg.header.stamp.to_sec() + ";")
     f.write(str(val[0]) + ';')
     f.write(str(val[1]) + ';')
-   	f.write('\n')
-    #print '%9.5f %9.5f'% Fx.add(msg.wrench.force.x), '%9.5f %9.5f'% Fy.add(msg.wrench.force.y), '%9.5f %9.5f'% Fz.add(msg.wrench.force.z), \
-    #     '%9.5f %9.5f'%Tx.add(msg.wrench.torque.x), '%9.5f %9.5f'% Ty.add(msg.wrench.torque.y),'%9.5f %9.5f\r'% Tz.add(msg.wrench.torque.z), 
+    f.write('\n')
+    #print '%9.5f %9.5f'% Fy.add(msg.wrench.force.y), '%9.5f %9.5f'% Fz.add(msg.wrench.force.z)
+    print 'X = ' + str(msg.wrench.force.x) + '\n'
 
 
 def main():
@@ -100,7 +101,7 @@ def main():
     fx_std = []
     def_data = []
     x_len = 1000
-    y_len = 40
+    y_len = 10
     # init default data - for aspect ratio
     i = 0
     while i < x_len:
@@ -113,11 +114,11 @@ def main():
     win.resize(1000,600)
     win.setWindowTitle('Mean and std deviation')
     mean_row = win.addPlot(title = 'mean')
-    fx_mean_curve = mean_row.plot(def_data, pen = 'b')
+    fx_mean_curve = mean_row.plot(def_data, pen = 'r')
     mean_row.enableAutoRange('xy', False)
     win.nextRow()
     std_row = win.addPlot(title = 'std')
-    fx_std_curve = std_row.plot(def_data, pen = 'b')
+    fx_std_curve = std_row.plot(def_data, pen = 'r')
     std_row.enableAutoRange('xy', False)
     f = open('mean_view.output', "w")
     f.write('t;fx_mean;fx_var;fy_mean;fy_var;fz_mean;fz_var;\n')
