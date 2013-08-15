@@ -82,10 +82,7 @@ def resend_data(msg):
 		mean_pub.publish(mean_wr)
 		dev_pub.publish(dev_wr)
 		count = 0
-
 	count += 1
-	#print	'%9.5f %9.5f'% Fx.add(msg.wrench.force.x), '%9.5f %9.5f'% Fy.add(msg.wrench.force.y), '%9.5f %9.5f'% Fz.add(msg.wrench.force.z), \
-	#		'%9.5f %9.5f'%Tx.add(msg.wrench.torque.x), '%9.5f %9.5f'% Ty.add(msg.wrench.torque.y),'%9.5f %9.5f\r'% Tz.add(msg.wrench.torque.z), 
 
 def main():
 	global Fx, Fy, Fz, Tx, Ty, Tz
