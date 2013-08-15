@@ -81,12 +81,18 @@ def resend_data(msg):
 		# publishing
 		mean_pub.publish(mean_wr)
 		dev_pub.publish(dev_wr)
+		real_pub.publish(msg)
 		count = 0
 	count += 1
 
 def main():
 	global Fx, Fy, Fz, Tx, Ty, Tz
-	global mean_pub,dev_pub
+	global mean_pub,dev_pub,real_pub
+
+	# topic names
+	real_pub_name='ft_data'
+	dev_pub_name='ft_std_dev'
+	mean_pub_name='ft_mean_val'
 
 	try:
 		avrg_count = int(sys.argv[1])
@@ -109,10 +115,15 @@ def main():
 	# subscribing to topic netft_data (sensor data)
 	rospy.Subscriber('/netft_data',WrenchStamped,resend_data)
 	# creating publishers: mean value and standard deviation
-	mean_pub = rospy.Publisher("mean_val",WrenchStamped)
-	dev_pub = rospy.Publisher("deviation",WrenchStamped)
+	mean_pub = rospy.Publisher(mean_pub_name,WrenchStamped)
+	dev_pub = rospy.Publisher(dev_pub_name,WrenchStamped)
+	real_pub = rospy.Publisher(real_pub_name,WrenchStamped)
+	
 	# our work is done here; waiting
-	print 'all done, publishing...'
+	print 'Publishing topics:'
+	print 'Real data out: ' + real_pub_name
+	print 'Mean values data out: ' + mean_pub_name
+	print 'Standard deviation data out: ' + dev_pub_name 
 	rospy.spin()
 
 if __name__ == '__main__':
