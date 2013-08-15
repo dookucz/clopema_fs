@@ -33,7 +33,7 @@ def main():
 	global td_data
 	global td_curve
 	global fd_curve
-	FREQ_CONST = 7000
+	FREQ_CONST = 1000
 	td_data = []
 	rospy.init_node('sm_test')
 	# init default data
