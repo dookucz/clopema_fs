@@ -55,29 +55,24 @@ def resend_data(msg):
 		mean_wr = WrenchStamped()
 		dev_wr = WrenchStamped()
 		# copying acquired msg header to new msg
-		mean_wr.header = msg.header # will this work?
+		mean_wr.header = msg.header
 		dev_wr.header = msg.header
 		# copying force data X
 		mean_wr.wrench.force.x = val_fx[0]
 		dev_wr.wrench.force.x = val_fx[1]
 		# copying force data Y
-		val = Fy.add(msg.wrench.force.y)
 		mean_wr.wrench.force.y = val_fy[0]
 		dev_wr.wrench.force.y = val_fy[1]
 		# copying force data Z
-		val = Fz.add(msg.wrench.force.z)
 		mean_wr.wrench.force.z = val_fz[0]
 		dev_wr.wrench.force.z = val_fz[1]
 		# copying torque data X
-		val = Tx.add(msg.wrench.torque.x)
 		mean_wr.wrench.torque.x = val_tx[0]
 		dev_wr.wrench.torque.x = val_tx[1]
 		# copying torque data Y
-		val = Ty.add(msg.wrench.torque.y)
 		mean_wr.wrench.torque.y = val_ty[0]
 		dev_wr.wrench.torque.y = val_ty[1]
 		# copying torque data Z
-		val = Tz.add(msg.wrench.torque.z)
 		mean_wr.wrench.torque.z = val_tz[0]
 		dev_wr.wrench.torque.z = val_tz[1]
 		# publishing
