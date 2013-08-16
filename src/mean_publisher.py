@@ -48,7 +48,7 @@ def resend_data(msg):
 
 	# TODO pridelat if na cekani nez se nabere dost dat?
 
-	if count == 10:
+	if count == SHOW_EACH:
 		mean_wr = WrenchStamped()
 		dev_wr = WrenchStamped()
 		# copying acquired msg header to new msg
