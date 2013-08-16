@@ -42,42 +42,44 @@ def resend_data(msg):
 	global count
 	global Fx, Fy, Fz, Tx, Ty, Tz
 	global mean_pub,dev_pub
+	global filter_count
 
-	# const
-	SHOW_EACH = 10
-
-	# TODO pridelat if na cekani nez se nabere dost dat?
-
-	if count == SHOW_EACH:
+	# filtering
+	val_fx = Fx.add(msg.wrench.force.x)
+	val_fy = Fy.add(msg.wrench.force.y)
+	val_fz = Fz.add(msg.wrench.force.z)
+	val_tx = Tx.add(msg.wrench.torque.x)
+	val_ty = Ty.add(msg.wrench.torque.y)
+	val_tz = Tz.add(msg.wrench.torque.z)
+	if count == filter_count:
 		mean_wr = WrenchStamped()
 		dev_wr = WrenchStamped()
 		# copying acquired msg header to new msg
 		mean_wr.header = msg.header # will this work?
 		dev_wr.header = msg.header
 		# copying force data X
-		val = Fx.add(msg.wrench.force.x)
-		mean_wr.wrench.force.x = val[0]
-		dev_wr.wrench.force.x = val[1]
+		mean_wr.wrench.force.x = val_fx[0]
+		dev_wr.wrench.force.x = val_fx[1]
 		# copying force data Y
 		val = Fy.add(msg.wrench.force.y)
-		mean_wr.wrench.force.y = val[0]
-		dev_wr.wrench.force.y = val[1]
+		mean_wr.wrench.force.y = val_fy[0]
+		dev_wr.wrench.force.y = val_fy[1]
 		# copying force data Z
 		val = Fz.add(msg.wrench.force.z)
-		mean_wr.wrench.force.z = val[0]
-		dev_wr.wrench.force.z = val[1]
+		mean_wr.wrench.force.z = val_fz[0]
+		dev_wr.wrench.force.z = val_fz[1]
 		# copying torque data X
 		val = Tx.add(msg.wrench.torque.x)
-		mean_wr.wrench.torque.x = val[0]
-		dev_wr.wrench.torque.x = val[1]
+		mean_wr.wrench.torque.x = val_tx[0]
+		dev_wr.wrench.torque.x = val_tx[1]
 		# copying torque data Y
 		val = Ty.add(msg.wrench.torque.y)
-		mean_wr.wrench.torque.y = val[0]
-		dev_wr.wrench.torque.y = val[1]
+		mean_wr.wrench.torque.y = val_ty[0]
+		dev_wr.wrench.torque.y = val_ty[1]
 		# copying torque data Z
 		val = Tz.add(msg.wrench.torque.z)
-		mean_wr.wrench.torque.z = val[0]
-		dev_wr.wrench.torque.z = val[1]
+		mean_wr.wrench.torque.z = val_tz[0]
+		dev_wr.wrench.torque.z = val_tz[1]
 		# publishing
 		mean_pub.publish(mean_wr)
 		dev_pub.publish(dev_wr)
@@ -88,6 +90,7 @@ def resend_data(msg):
 def main():
 	global Fx, Fy, Fz, Tx, Ty, Tz
 	global mean_pub,dev_pub,real_pub
+	global filter_count
 
 	# topic names
 	real_pub_name='ft_data'
@@ -96,11 +99,16 @@ def main():
 
 	try:
 		avrg_count = int(sys.argv[1])
+		filter_count = int(sys.argv[2])
+		if filter_count < 1  or avrg_count < 1:
+			print 'Error: arguments must be positive integers'
+			sys.exit(1)
 	except ValueError:
 		print 'Error: argument is non-integer type'
 		sys.exit(1)
 	except IndexError:
-		print 'Error: no arguments given'
+		print 'Error: two arguments needed'
+		print 'USAGE: mean_publisher filter_count each_val_to_print'
 		sys.exit(1)
 
 	Fx = RunningStatistic(count=avrg_count)
