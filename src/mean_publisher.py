@@ -42,7 +42,7 @@ def resend_data(msg):
 	global count
 	global Fx, Fy, Fz, Tx, Ty, Tz
 	global mean_pub,dev_pub
-	global filter_count
+	global publish_each
 
 	# filtering
 	val_fx = Fx.add(msg.wrench.force.x)
@@ -51,7 +51,7 @@ def resend_data(msg):
 	val_tx = Tx.add(msg.wrench.torque.x)
 	val_ty = Ty.add(msg.wrench.torque.y)
 	val_tz = Tz.add(msg.wrench.torque.z)
-	if count == filter_count:
+	if count == publish_each:
 		mean_wr = WrenchStamped()
 		dev_wr = WrenchStamped()
 		# copying acquired msg header to new msg
@@ -85,7 +85,7 @@ def resend_data(msg):
 def main():
 	global Fx, Fy, Fz, Tx, Ty, Tz
 	global mean_pub,dev_pub,real_pub
-	global filter_count
+	global publish_each
 
 	# topic names
 	real_pub_name='ft_data'
@@ -94,8 +94,8 @@ def main():
 
 	try:
 		avrg_count = int(sys.argv[1])
-		filter_count = int(sys.argv[2])
-		if filter_count < 1  or avrg_count < 1:
+		publish_each = int(sys.argv[2])
+		if publish_each < 1  or avrg_count < 1:
 			print 'Error: arguments must be positive integers'
 			sys.exit(1)
 	except ValueError:
@@ -123,6 +123,8 @@ def main():
 	real_pub = rospy.Publisher(real_pub_name,WrenchStamped)
 	
 	# our work is done here; waiting
+	print 'Filtering through ' + str(avrg_count) + ' values'
+	print 'Publishing each ' + str(publish_each) + ' value'
 	print 'Publishing topics:'
 	print 'Real data out: ' + real_pub_name
 	print 'Mean values data out: ' + mean_pub_name
