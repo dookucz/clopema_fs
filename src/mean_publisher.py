@@ -124,7 +124,7 @@ def main():
 	
 	# our work is done here; waiting
 	print 'Filtering through ' + str(avrg_count) + ' values'
-	print 'Publishing each ' + str(publish_each) + ' value'
+	print 'Publishing each ' + str(publish_each) + '. value'
 	print 'Publishing topics:'
 	print 'Real data out: ' + real_pub_name
 	print 'Mean values data out: ' + mean_pub_name
