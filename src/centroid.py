@@ -4,7 +4,7 @@
 #	gripper mass
 #	force and torque offset
 # Robot _MUST_ be still when running this script!
-import roslib; load_manifest('clopema_calibration')
+import roslib; roslib.load_manifest('clopema_calibration')
 import rospy
 import tf
 import sys
