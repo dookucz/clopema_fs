@@ -47,7 +47,7 @@ if __name__ == '__main__':
 	global F,T
 	global SENSOR_READINGS
 	# number of readings to make
-	SENSOR_READINGS = 100
+	SENSOR_READINGS = 4
 	
 	# gravity force
 	g = 9.81
@@ -105,7 +105,7 @@ if __name__ == '__main__':
 		m = float(X[3])
 
 		# creating matrix A for torque calculation
-		A = np.matrix(np.empty(shape=(3*SENSOR_READINGS,4)))
+		A = np.matrix(np.empty(shape=(3*SENSOR_READINGS,6)))
 		i = 0
 		while i < SENSOR_READINGS:
 			A[3*i] = np.matrix([[1,0,0,0,-m*R[2,2]*g,m*R[1,2]*g]])
@@ -113,25 +113,44 @@ if __name__ == '__main__':
 			A[3*i+2] = np.matrix([[0,0,1,-m*R[1,2]*g,m*R[0,2]*g,0]])
 			i += 1
 			
-		#vypocet M
+		# calculating torque offset and centroid position (r)
 		U,s,V = np.linalg.svd(A,full_matrices=1)
 		V = V.getH()
-		S = np.matrix(np.zeros(shape=(len(b),6)))
+		S = np.matrix(np.zeros(shape=(len(T),6)))
 		S[0,0] = s[0]
 		S[1,1] = s[1]
 		S[2,2] = s[2]
 		S[3,3] = s[3]
 		S[4,4] = s[4]
 		S[5,5] = s[5]
-		X = V*np.linalg.pinv(S)*U.getH()*M
-		Mo = X[0:3]
-		centroid_pos = X[4:7]
+		X = V*np.linalg.pinv(S)*U.getH()*T
+		To = X[0:3]
+		centroid_pos = X[3:6]
 		
 		# printing output
 		print 'R =\n' + str(R)
 		print 'm = ' + str(m)
 		print 'Fo =\n' + str(Fo)
-		print 'Mo =\n' + str(Mo)
+		print 'To =\n' + str(To)
 		print 'r =\n' + str(centroid_pos)
 		print '\n'
+		
+		### DEBUG OUT
+		try:
+			f = open('centroid.out','w')
+			f.write('R =\n' + str(R) + '\n')
+			f.write('F =\n' + str(F) + '\n')
+			f.write('T =\n' + str(T) + '\n')
+			f.write('Fo =\n' + str(Fo) + '\n')
+			f.write('To =\n' + str(To) + '\n')
+			f.write('r =\n' + str(centroid_pos) + '\n')
+			f.write('m =\n' + str(m) + '\n')
+			f.write('\n\n')
+			f.close()
+		except IOError:
+			print 'DEBUG ERR: can\'t write to file centroid.out'
+		###
+		
+		
+		# sleep for some time and recalculate
 		rospy.sleep(5)
