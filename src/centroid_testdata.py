@@ -46,7 +46,7 @@ if __name__ == '__main__':
 	#vypocet F
 	U,s,V = np.linalg.svd(A,full_matrices=1)
 	V = V.getH()
-	S = np.zeros(shape=(len(b),4))
+	S = np.matrix(np.zeros(shape=(len(b),4)))
 	S[0,0] = s[0]
 	S[1,1] = s[1]
 	S[2,2] = s[2]
@@ -81,7 +81,7 @@ if __name__ == '__main__':
 	#vypocet M
 	U,s,V = np.linalg.svd(A,full_matrices=1)
 	V = V.getH()
-	S = np.zeros(shape=(len(b),6))
+	S = np.matrix(np.zeros(shape=(len(b),6)))
 	S[0,0] = s[0]
 	S[1,1] = s[1]
 	S[2,2] = s[2]
