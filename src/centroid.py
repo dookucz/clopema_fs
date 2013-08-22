@@ -75,8 +75,8 @@ if __name__ == '__main__':
 		
 		# getting transformation frame data
 		now = rospy.Time(0)
-		listener.waitForTransform('/base_link','/r2_gripper',now,rospy.Duration(1.5))
-		(trans,quat) = listener.lookupTransform('/base_link','/r2_gripper',now)
+		listener.waitForTransform('/base_link','/r2_force_sensor',now,rospy.Duration(1.5))
+		(trans,quat) = listener.lookupTransform('/base_link','/r2_force_sensor',now)
 		R = quat2rot(quat)
 
 		# creating matrix A for force calculation
