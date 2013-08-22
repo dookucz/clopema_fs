@@ -32,6 +32,5 @@ if __name__ == '__main__':
 		now = rospy.Time(0)
 		listener.waitForTransform('/base_link','/r2_gripper',now,rospy.Duration(1.5))
 		(trans,rot) = listener.lookupTransform('/base_link','/r2_gripper',now)
-		print 'Trans = ' + str(trans) + ' rot = ' + str(rot)
-		print quat2rot(rot)
-		rospy.sleep(1)
+		print str(quat2rot(rot)) + '\n\n'
+		rospy.sleep(3)

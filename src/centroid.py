@@ -137,14 +137,14 @@ if __name__ == '__main__':
 		
 		### DEBUG OUT
 		try:
-			f = open('centroid.out','w')
+			f = open('centroid.out','a')
 			f.write('R =\n' + str(R) + '\n')
 			f.write('F =\n' + str(F) + '\n')
 			f.write('T =\n' + str(T) + '\n')
 			f.write('Fo =\n' + str(Fo) + '\n')
 			f.write('To =\n' + str(To) + '\n')
 			f.write('r =\n' + str(centroid_pos) + '\n')
-			f.write('m =\n' + str(m) + '\n')
+			f.write('m = ' + str(m) + '\n')
 			f.write('\n\n')
 			f.close()
 		except IOError:
@@ -153,4 +153,4 @@ if __name__ == '__main__':
 		
 		
 		# sleep for some time and recalculate
-		rospy.sleep(5)
+		rospy.sleep(1)
