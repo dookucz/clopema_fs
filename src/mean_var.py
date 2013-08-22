@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-import roslib; roslib.load_manifest('clopema_calibration')
+import roslib; roslib.load_manifest('clopema_fs')
 import rospy, smach, smach_ros, math, copy, tf, PyKDL, os, shutil, numpy
 from tf.transformations import quaternion_from_euler, quaternion_about_axis
 from tf_conversions import posemath

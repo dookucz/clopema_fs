@@ -6,7 +6,7 @@ import math
 import scipy
 import sys
 from PyQt4 import QtGui,QtCore
-import roslib; roslib.load_manifest('clopema_calibration')
+import roslib; roslib.load_manifest('clopema_fs')
 import rospy, smach, smach_ros, copy, tf, PyKDL, os, shutil
 from tf.transformations import quaternion_from_euler, quaternion_about_axis
 from tf_conversions import posemath

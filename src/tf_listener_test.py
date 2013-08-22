@@ -1,5 +1,5 @@
 #!/usr/bin/env python2
-import roslib; roslib.load_manifest('clopema_calibration')
+import roslib; roslib.load_manifest('clopema_fs')
 import rospy
 import math
 import tf
