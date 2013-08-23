@@ -79,7 +79,7 @@ def resend_data(msg):
 		mean_pub.publish(mean_wr)
 		dev_pub.publish(dev_wr)
 		real_pub.publish(msg)
-		count = 0
+		count = -1
 	count += 1
 
 def main():
