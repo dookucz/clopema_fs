@@ -9,6 +9,7 @@ from time import sleep
 from tf_conversions import posemath
 from geometry_msgs.msg import Pose
 from clopema_utilities import np_bridge
+from geometry_msgs.msg import WrenchStamped
 
 # const
 MAX_VALS = 1000
@@ -32,7 +33,9 @@ def quat2rot(quat):
 
 def write_data(msg):
 	global count
+	global d
 	if count < MAX_VALS:
+		d.write("%15.5f" % msg.header.stamp.to_sec() + ";")
 		d.write(str(msg.wrench.force.x) + ";")
 		d.write(str(msg.wrench.force.y) + ";")
 		d.write(str(msg.wrench.force.z) + ";")
@@ -42,21 +45,24 @@ def write_data(msg):
 		count += 1
 	else:
 		d.close()
-		sys.exit(0)
+		rospy.signal_shutdown('Data acquired, shutting down')
 
 def main():
 	global count
+	global d
+	rospy.init_node('centroid_data_collector')
 	try:
-		d = open('centroid_calc_data')
+		d = open('centroid_calc_data','w')
 	except IOError:
 		print 'Error: couldn\'t open file'
-		sys.exit(1)
-	d.write("%15.5f" % msg.header.stamp.to_sec() + ";")
+		exit(1)
+	listener = tf.TransformListener()
 	now = rospy.Time(0)
 	listener.waitForTransform('/base_link','/r2_force_sensor',now,rospy.Duration(1.5))
 	(trans,rot) = listener.lookupTransform('/base_link','/r2_force_sensor',now)
 	d.write(str(quat2rot(rot)) + '\n')
 	count = 0
+	rospy.Subscriber('/netft_data',WrenchStamped,write_data)
 	rospy.spin()
 
 if __name__ == '__main__':
