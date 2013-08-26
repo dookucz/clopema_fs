@@ -27,7 +27,7 @@ def quat2rot(quat):
 
 if __name__ == '__main__':
 	rospy.init_node('tf_listener_test')
-	listener = tf2_ros.TransformListener()
+	listener = tf.TransformListener()
 	while not rospy.is_shutdown():
 		now = rospy.Time(0)
 		listener.waitForTransform('/base_link','/r2_force_sensor',now,rospy.Duration(1.5))
