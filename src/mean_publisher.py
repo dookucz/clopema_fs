@@ -21,7 +21,7 @@ class RunningStatistic(object):
 			self.sq_sum -= self.F[0]**2
 			del self.F[0]
 			self.mean = self.sum/float(self.N)
-			self.std = sqrt(self.N*self.sq_sum-self.sum**2)/float(self.N)
+			self.std = numpy.sqrt(self.N*self.sq_sum-self.sum**2)/float(self.N)
 		return self.mean, self.std
 
 count = 0
