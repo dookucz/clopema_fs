@@ -5,37 +5,24 @@ from geometry_msgs.msg import WrenchStamped
 
 class RunningStatistic(object):
 	def __init__(self, count=2000):
-		self.F=[]
-		self.counter=0
-		self.N=count
-		self.mean_old=0
-		self.var_old=0
-		self.Fo=0
+		self.F = []
+		self.N = count
+		self.sum = 0
+		self.mean = 0
+		self.sq_sum = 0
+		self.std = 0
 
 	def add(self, value):
-		self.F.append(value) 
-		self.counter+=1  
-		if  self.counter>self.N: 
-			self.Fo=self.F[0]
-			del self.F[0] 
-
-		pom=0
-		pom2=0
-		if self.counter==self.N:
-			for i in range(0,self.N-1):
-				pom=pom+self.F[i]
-				pom2=pom2+self.F[i]*self.F[i]
-			self.mean_old=pom/self.N
-			self.var_old=pom2/self.N-self.mean_old*self.mean_old
-
-		if self.counter>self.N:
-			mean_new=self.mean_old+(-self.Fo+self.F[-1])/self.N
-			var_new=self.var_old+(-self.Fo*self.Fo+self.F[-1]*self.F[-1])/self.N+self.mean_old*self.mean_old-mean_new*mean_new
-
-			self.mean_old=mean_new
-			self.var_old=var_new
-
-		return self.mean_old, self.var_old      
+		self.F.append(value)
+		self.sum += value
+		self.sq_sum += value**2
+		if len(self.F) > self.N:
+			self.sum -= self.F[0]
+			self.sq_sum -= self.F[0]**2
+			del self.F[0]
+			self.mean = self.sum/float(self.N)
+			self.std = sqrt(self.N*self.sq_sum-self.sum**2)/float(self.N)
+		return self.mean, self.std
 
 count = 0
 def resend_data(msg):
