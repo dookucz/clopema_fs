@@ -14,22 +14,22 @@ def data_acquisition(msg):
 	global data
 	global count
 	global sampleCount
-	global fftPlot
-	global dataPlot
+	global fftCurve
+	global dataCurve
 	if count < sampleCount:
 		# TODO make all 3 forces
 		data[count] = msg.wrench.force.x
 		count += 1
 	elif count == sampleCount:
 		# data acquired; calculate fft
-		Y = np.fft.fft(y)
+		Y = np.fft.fft(data)
 		Pyy = np.real(Y*np.conj(Y)/sampleCount)
 		# getting rid of DC gain; makes graph less readable
 		Pyy[0] = 0
 		# replotting graph
-		dataPlot.setData(data)
-		fftPlot.setData(Pyy)
-		# resetting count
+		dataCurve.setData(data)
+		fftCurve.setData(Pyy)
+		# resetting counter
 		count = 0
 
 
@@ -38,8 +38,8 @@ def main():
 	global count
 	global data
 	global sampleCount
-	global fftPlot
-	global dataPlot
+	global fftCurve
+	global dataCurve
 	# getting args
 	try:
 		dataTopic = str(sys.argv[1])
@@ -67,14 +67,14 @@ def main():
 	win.setWindowTitle('FFT force')
 	dataPlot = win.addPlot(title = 'Force Z time domain')
 	# plot sample time domain data
-	dataCurve = dataPlot.plot([0]*sampleCount,timeAxis,pen = 'g')
+	dataCurve = dataPlot.plot(timeAxis, [0]*sampleCount, pen = 'g')
 	# stop rescaling x axis
 	dataPlot.enableAutoRange('x', False)
 	dataPlot.setLabel('bottom', "Time", units='s')
 	win.nextRow()
 	# plot sample freq domain data
 	fftPlot = win.addPlot(title = 'Force Z freq domain')
-	fftCurve = fftPlot.plot([0]*sampleCount/2, freqAxis, pen = 'r')
+	fftCurve = fftPlot.plot(freqAxis, [0]*(sampleCount/2), pen = 'r')
 	# stop rescaling x axis
 	fftPlot.enableAutoRange('x', False)
 	fftPlot.setLabel('bottom', "Frequency", units='Hz')
@@ -83,3 +83,6 @@ def main():
 	rospy.Subscriber(dataTopic,WrenchStamped,data_acquisition)
 	# QT loop; from now on, all work is done within data_acquisition()
 	QtGui.QApplication.instance().exec_()
+	
+if __name__ == '__main__':
+	main()

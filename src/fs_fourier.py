@@ -8,12 +8,7 @@ import sys
 from PyQt4 import QtGui,QtCore
 import roslib; roslib.load_manifest('clopema_fs')
 import rospy, smach, smach_ros, copy, tf, PyKDL, os, shutil
-from tf.transformations import quaternion_from_euler, quaternion_about_axis
-from tf_conversions import posemath
-from clopema_smach import *
-from geometry_msgs.msg import *
-from smach import State
-from clopema_planning_actions.msg import MA1400JointState
+from geometry_msgs.msg import WrenchStamped
 
 def netf_cb(msg):
 	global FREQ_CONST
