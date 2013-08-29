@@ -16,6 +16,8 @@ def data_acquisition(msg):
 	global sampleCount
 	global fftCurve
 	global dataCurve
+	global timeAxis
+	global freqAxis
 	if count < sampleCount:
 		# TODO make all 3 forces
 		data[count] = msg.wrench.force.x
@@ -27,8 +29,8 @@ def data_acquisition(msg):
 		# getting rid of DC gain; makes graph less readable
 		Pyy[0] = 0
 		# replotting graph
-		dataCurve.setData(data)
-		fftCurve.setData(Pyy)
+		dataCurve.setData(timeAxis,data)
+		fftCurve.setData(freqAxis,Pyy[0:sampleCount/2])
 		# resetting counter
 		count = 0
 
@@ -40,6 +42,8 @@ def main():
 	global sampleCount
 	global fftCurve
 	global dataCurve
+	global timeAxis
+	global freqAxis
 	# getting args
 	try:
 		dataTopic = str(sys.argv[1])
@@ -58,6 +62,7 @@ def main():
 	# calculating frequency axis array (defines step size on freq axis)
 	freqAxis = np.arange(0,sampleCount/2)*freq/float(sampleCount)
 	# calculating time domain axis
+	# 2000 * 1 / 1000 = 2
 	timeAxis = np.arange(0,sampleCount)*1/float(freq)
 	# initiating node
 	rospy.init_node('running_fourier')
