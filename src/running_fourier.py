@@ -20,6 +20,7 @@ def data_acquisition(msg):
 	global freqAxis
 	if count < sampleCount:
 		# TODO make all 3 forces
+		# HERE YOU CAN CHANGE FORCE/TORQUE TO VIEW
 		data[count] = msg.wrench.force.x
 		count += 1
 	elif count == sampleCount:
@@ -70,7 +71,7 @@ def main():
 	win = pg.GraphicsWindow(title="FFT force")
 	win.resize(1000,600)
 	win.setWindowTitle('FFT force')
-	dataPlot = win.addPlot(title = 'Force Z time domain')
+	dataPlot = win.addPlot(title = 'Force time domain')
 	# plot sample time domain data
 	dataCurve = dataPlot.plot(timeAxis, [0]*sampleCount, pen = 'g')
 	# stop rescaling x axis
@@ -78,7 +79,7 @@ def main():
 	dataPlot.setLabel('bottom', "Time", units='s')
 	win.nextRow()
 	# plot sample freq domain data
-	fftPlot = win.addPlot(title = 'Force Z freq domain')
+	fftPlot = win.addPlot(title = 'Force freq domain')
 	fftCurve = fftPlot.plot(freqAxis, [0]*(sampleCount/2), pen = 'r')
 	# stop rescaling x axis
 	fftPlot.enableAutoRange('x', False)
