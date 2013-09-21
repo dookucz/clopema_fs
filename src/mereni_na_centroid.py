@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 #
-#   Spustit jako:
-#       rosrun clopema_fs prubezne_snimani.py | tee output
-#       view_data.py dostane ze souboru "output" potrebna data
+# Spustit jako:
+# rosrun clopema_fs prubezne_snimani.py | tee output
+# view_data.py dostane ze souboru "output" potrebna data
 #
 import roslib; roslib.load_manifest('clopema_fs')
 import rospy, smach, smach_ros, math, copy, tf, PyKDL, os, shutil, numpy
@@ -11,7 +11,7 @@ from tf_conversions import posemath
 from clopema_smach import *
 from geometry_msgs.msg import *
 from smach import State
-from clopema_planning_actions.msg import MA1400JointState
+from clopema_smach.msg import MA1400JointState
 import tf
 from tf_conversions import posemath
 from geometry_msgs.msg import Pose
@@ -44,7 +44,7 @@ def write_force(msg):
     MAX_COUNT = 10000
     global d
     global count
-    global pos_num
+    global pose_num
     if count >= 0:
         if count < MAX_COUNT:
             d.write(str(pose_num) + ';')
@@ -70,7 +70,7 @@ def store_data(msg, ud):
         now = rospy.Time(0)
         listener.waitForTransform('/base_link','/r2_force_sensor',now,rospy.Duration(1.5))
         (trans,rot) = listener.lookupTransform('/base_link','/r2_force_sensor',now)
-        f.write(str(pose_num) + ':\n' + str(quat2rot(rot)) + '\n\n')    
+        f.write(str(pose_num) + ':\n' + str(quat2rot(rot)) + '\n\n')
     f.close()
     return
 
@@ -87,14 +87,14 @@ def main():
 
     rospy.init_node('sm_test')
     d = open("data_fs", "w")
-    # for t in numpy.arange(-to_rad(195), -to_rad(100) + 0.001, math.pi / 3):            # max range -to_rad(195), to_rad(195) + 0.001
-    #     for b in numpy.arange(to_rad(-40), to_rad(80) + 0.001, math.pi / 3):	      # max range  to_rad(-40), to_rad(175) + 0.001
-    #         for r in numpy.arange(-to_rad(145), to_rad(0) + 0.001, math.pi / 3):    # max range -to_rad(145), to_rad(145) + 0.001
-    #             goal = MA1400JointState()
-    #             goal.t = t
-    #             goal.b = b
-    #             goal.r = r
-    #             goals.append(copy.deepcopy(goal))
+    # for t in numpy.arange(-to_rad(195), -to_rad(100) + 0.001, math.pi / 3): # max range -to_rad(195), to_rad(195) + 0.001
+    # for b in numpy.arange(to_rad(-40), to_rad(80) + 0.001, math.pi / 3): # max range to_rad(-40), to_rad(175) + 0.001
+    # for r in numpy.arange(-to_rad(145), to_rad(0) + 0.001, math.pi / 3): # max range -to_rad(145), to_rad(145) + 0.001
+    # goal = MA1400JointState()
+    # goal.t = t
+    # goal.b = b
+    # goal.r = r
+    # goals.append(copy.deepcopy(goal))
     ###############
     # 1
     offset = -10
@@ -115,7 +115,86 @@ def main():
     goal.b = to_rad(48)
     goal.t = 0
     goals.append(copy.deepcopy(goal))
+    # 4
+    goal = MA1400JointState()
+    goal.r = to_rad(45+offset)
+    goal.b = to_rad(48)
+    goal.t = to_rad(90)
+    goals.append(copy.deepcopy(goal))
+    # 5
+    goal = MA1400JointState()
+    goal.r = to_rad(offset)
+    goal.b = to_rad(48)
+    goal.t = to_rad(90)
+    goals.append(copy.deepcopy(goal))
+    # 6
+    goal = MA1400JointState()
+    goal.r = to_rad(-45+offset)
+    goal.b = to_rad(48)
+    goal.t = to_rad(90)
+    goals.append(copy.deepcopy(goal))
+    
+    shift = 45
+    # 1
+    offset = -10
+    goal = MA1400JointState()
+    goal.r = to_rad(offset)
+    goal.b = to_rad(48+shift)
+    goal.t = to_rad(90)
+    goals.append(copy.deepcopy(goal))
+    # 2
+    goal = MA1400JointState()
+    goal.r = to_rad(offset)
+    goal.b = to_rad(48+shift)
+    goal.t = to_rad(0)
+    goals.append(copy.deepcopy(goal))
+    # 3
+    goal = MA1400JointState()
+    goal.r = to_rad(offset)
+    goal.b = to_rad(48+shift)
+    goal.t = to_rad(-90)
+    goals.append(copy.deepcopy(goal))
+    shift = 90
+    
+    
+    # 1
+    goal = MA1400JointState()
+    goal.r = to_rad(-45+offset)
+    goal.b = to_rad(48+shift)
+    goal.t = 0
+    goals.append(copy.deepcopy(goal))
+    # 2
+    goal = MA1400JointState()
+    goal.r = to_rad(offset)
+    goal.b = to_rad(48+shift)
+    goal.t = 0
+    goals.append(copy.deepcopy(goal))
+    # 3
+    goal = MA1400JointState()
+    goal.r = to_rad(45+offset)
+    goal.b = to_rad(48+shift)
+    goal.t = 0
+    goals.append(copy.deepcopy(goal))
+    # 4
+    goal = MA1400JointState()
+    goal.r = to_rad(45+offset)
+    goal.b = to_rad(48+shift)
+    goal.t = to_rad(90)
+    goals.append(copy.deepcopy(goal))
+    # 5
+    goal = MA1400JointState()
+    goal.r = to_rad(offset)
+    goal.b = to_rad(48+shift)
+    goal.t = to_rad(90)
+    goals.append(copy.deepcopy(goal))
+    # 6
+    goal = MA1400JointState()
+    goal.r = to_rad(-45+offset)
+    goal.b = to_rad(48+shift)
+    goal.t = to_rad(90)
+    goals.append(copy.deepcopy(goal))
     ##############
+
     
     print len(goals)
     
