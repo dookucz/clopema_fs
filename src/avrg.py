@@ -89,22 +89,28 @@ def main():
 		#print 'DEBUG: stop at index ' + str(stop_pos) + ', next start at index ' + str(start_pos)
 		# Force X
 		sum = 0.0
+		pow = 0.0
 		for val in f_x[stop_pos:start_pos]:
 			sum += val
 		avrg = sum / (start_pos - stop_pos)
+		pow += math.pow(avrg,2)
 		print '\tAverage values for force:\n\t\tX = ' + str(avrg)
 		# Force Y
 		sum = 0.0
 		for val in f_y[stop_pos:start_pos]:
 			sum += val
 		avrg = sum / (start_pos - stop_pos)
+		pow += math.pow(avrg,2)
 		print '\t\tY = ' + str(avrg)
 		# Force Z
 		sum = 0.0
 		for val in f_z[stop_pos:start_pos]:
 			sum += val
 		avrg = sum / (start_pos - stop_pos)
+		pow += math.pow(avrg,2)
 		print '\t\tZ = ' + str(avrg)
+		print '\tAbs value of force vector:\n\t\t' + str(math.sqrt(pow))
+		print '\tWeight:\n\t\t' + str(math.sqrt(pow)/9.81)
 		# Torque X
 		sum = 0.0
 		for val in m_x[stop_pos:start_pos]:
@@ -123,6 +129,7 @@ def main():
 			sum += val
 		avrg = sum / (start_pos - stop_pos)
 		print '\t\tZ = ' + str(avrg)
+
 		i += 1
 		
 if __name__ == '__main__':
