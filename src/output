@@ -1,0 +1,455 @@
+[H[2J18
+[INFO] [WallTime: 1375279234.788016] State machine starting in initial state 'counter' with userdata: 
+	['n']
+[INFO] [WallTime: 1375279234.788715] State machine transitioning 'counter':'succeeded'-->'pick_joints'
+s: 0.0
+l: 0.0
+u: 0.0
+r: -2.53072741539
+b: -0.698131700798
+t: -3.40339204139
+[INFO] [WallTime: 1375279234.789421] State machine transitioning 'pick_joints':'succeeded'-->'GOTO'
+[INFO] [WallTime: 1375279234.791444] State machine starting in initial state 'PLAN' with userdata: 
+	['robot', 'goal']
+[INFO] [WallTime: 1375279234.949019] State machine transitioning 'PLAN':'succeeded'-->'VISUALIZE'
+[INFO] [WallTime: 1375279248.683133] State machine transitioning 'VISUALIZE':'succeeded'-->'EXECUTE'
+[INFO] [WallTime: 1375279268.419048] State machine terminating 'EXECUTE':'succeeded':'succeeded'
+[INFO] [WallTime: 1375279268.419565] State machine transitioning 'GOTO':'succeeded'-->'PAUSE'
+[INFO] [WallTime: 1375279273.466137] State machine transitioning 'PAUSE':'succeeded'-->'TOPIC_STATE'
+x: -17.293026
+y: -35.592948
+z: -19.138987
+s: 0.0
+l: 0.0
+u: 0.0
+r: -2.53072741539
+b: -0.698131700798
+t: -3.40339204139
+[INFO] [WallTime: 1375279273.512253] State machine transitioning 'TOPIC_STATE':'succeeded'-->'counter'
+[INFO] [WallTime: 1375279273.542415] State machine transitioning 'counter':'succeeded'-->'pick_joints'
+s: 0.0
+l: 0.0
+u: 0.0
+r: -1.4835298642
+b: -0.698131700798
+t: -3.40339204139
+[INFO] [WallTime: 1375279273.573503] State machine transitioning 'pick_joints':'succeeded'-->'GOTO'
+[INFO] [WallTime: 1375279273.607504] State machine starting in initial state 'PLAN' with userdata: 
+	['trajectory', 'error', 'robot', 'goal']
+[INFO] [WallTime: 1375279273.710253] State machine transitioning 'PLAN':'succeeded'-->'VISUALIZE'
+[INFO] [WallTime: 1375279278.275568] State machine transitioning 'VISUALIZE':'succeeded'-->'EXECUTE'
+[INFO] [WallTime: 1375279284.878994] State machine terminating 'EXECUTE':'succeeded':'succeeded'
+[INFO] [WallTime: 1375279284.879600] State machine transitioning 'GOTO':'succeeded'-->'PAUSE'
+[INFO] [WallTime: 1375279289.899125] State machine transitioning 'PAUSE':'succeeded'-->'TOPIC_STATE'
+x: -32.188285
+y: -26.846734
+z: 0.051557
+s: 0.0
+l: 0.0
+u: 0.0
+r: -1.4835298642
+b: -0.698131700798
+t: -3.40339204139
+[INFO] [WallTime: 1375279289.921519] State machine transitioning 'TOPIC_STATE':'succeeded'-->'counter'
+[INFO] [WallTime: 1375279289.930491] State machine transitioning 'counter':'succeeded'-->'pick_joints'
+s: 0.0
+l: 0.0
+u: 0.0
+r: -0.436332312999
+b: -0.698131700798
+t: -3.40339204139
+[INFO] [WallTime: 1375279289.939397] State machine transitioning 'pick_joints':'succeeded'-->'GOTO'
+[INFO] [WallTime: 1375279289.948798] State machine starting in initial state 'PLAN' with userdata: 
+	['trajectory', 'error', 'robot', 'goal']
+[INFO] [WallTime: 1375279290.014816] State machine transitioning 'PLAN':'succeeded'-->'VISUALIZE'
+[INFO] [WallTime: 1375279294.551432] State machine transitioning 'VISUALIZE':'succeeded'-->'EXECUTE'
+[INFO] [WallTime: 1375279301.254935] State machine terminating 'EXECUTE':'succeeded':'succeeded'
+[INFO] [WallTime: 1375279301.255465] State machine transitioning 'GOTO':'succeeded'-->'PAUSE'
+[INFO] [WallTime: 1375279306.278123] State machine transitioning 'PAUSE':'succeeded'-->'TOPIC_STATE'
+x: -25.715619
+y: -4.235351
+z: 12.054569
+s: 0.0
+l: 0.0
+u: 0.0
+r: -0.436332312999
+b: -0.698131700798
+t: -3.40339204139
+[INFO] [WallTime: 1375279306.300393] State machine transitioning 'TOPIC_STATE':'succeeded'-->'counter'
+[INFO] [WallTime: 1375279306.313782] State machine transitioning 'counter':'succeeded'-->'pick_joints'
+s: 0.0
+l: 0.0
+u: 0.0
+r: -2.53072741539
+b: 0.349065850399
+t: -3.40339204139
+[INFO] [WallTime: 1375279306.324613] State machine transitioning 'pick_joints':'succeeded'-->'GOTO'
+[INFO] [WallTime: 1375279306.336296] State machine starting in initial state 'PLAN' with userdata: 
+	['trajectory', 'error', 'robot', 'goal']
+[INFO] [WallTime: 1375279306.426831] State machine transitioning 'PLAN':'succeeded'-->'VISUALIZE'
+[INFO] [WallTime: 1375279313.734725] State machine transitioning 'VISUALIZE':'succeeded'-->'EXECUTE'
+[INFO] [WallTime: 1375279324.858900] State machine terminating 'EXECUTE':'succeeded':'succeeded'
+[INFO] [WallTime: 1375279324.859534] State machine transitioning 'GOTO':'succeeded'-->'PAUSE'
+[INFO] [WallTime: 1375279329.891586] State machine transitioning 'PAUSE':'succeeded'-->'TOPIC_STATE'
+x: -29.335888
+y: -23.46081
+z: -21.294267
+s: 0.0
+l: 0.0
+u: 0.0
+r: -2.53072741539
+b: 0.349065850399
+t: -3.40339204139
+[INFO] [WallTime: 1375279329.913667] State machine transitioning 'TOPIC_STATE':'succeeded'-->'counter'
+[INFO] [WallTime: 1375279329.929449] State machine transitioning 'counter':'succeeded'-->'pick_joints'
+s: 0.0
+l: 0.0
+u: 0.0
+r: -1.4835298642
+b: 0.349065850399
+t: -3.40339204139
+[INFO] [WallTime: 1375279329.946800] State machine transitioning 'pick_joints':'succeeded'-->'GOTO'
+[INFO] [WallTime: 1375279329.963303] State machine starting in initial state 'PLAN' with userdata: 
+	['trajectory', 'error', 'robot', 'goal']
+[INFO] [WallTime: 1375279330.032143] State machine transitioning 'PLAN':'succeeded'-->'VISUALIZE'
+[INFO] [WallTime: 1375279334.576964] State machine transitioning 'VISUALIZE':'succeeded'-->'EXECUTE'
+[INFO] [WallTime: 1375279341.295063] State machine terminating 'EXECUTE':'succeeded':'succeeded'
+[INFO] [WallTime: 1375279341.295823] State machine transitioning 'GOTO':'succeeded'-->'PAUSE'
+[INFO] [WallTime: 1375279346.318062] State machine transitioning 'PAUSE':'succeeded'-->'TOPIC_STATE'
+x: -26.165611
+y: -33.158432
+z: 1.719267
+s: 0.0
+l: 0.0
+u: 0.0
+r: -1.4835298642
+b: 0.349065850399
+t: -3.40339204139
+[INFO] [WallTime: 1375279346.340480] State machine transitioning 'TOPIC_STATE':'succeeded'-->'counter'
+[INFO] [WallTime: 1375279346.359816] State machine transitioning 'counter':'succeeded'-->'pick_joints'
+s: 0.0
+l: 0.0
+u: 0.0
+r: -0.436332312999
+b: 0.349065850399
+t: -3.40339204139
+[INFO] [WallTime: 1375279346.375868] State machine transitioning 'pick_joints':'succeeded'-->'GOTO'
+[INFO] [WallTime: 1375279346.387817] State machine starting in initial state 'PLAN' with userdata: 
+	['trajectory', 'error', 'robot', 'goal']
+[INFO] [WallTime: 1375279346.464714] State machine transitioning 'PLAN':'succeeded'-->'VISUALIZE'
+[INFO] [WallTime: 1375279351.006031] State machine transitioning 'VISUALIZE':'succeeded'-->'EXECUTE'
+[INFO] [WallTime: 1375279357.658854] State machine terminating 'EXECUTE':'succeeded':'succeeded'
+[INFO] [WallTime: 1375279357.659350] State machine transitioning 'GOTO':'succeeded'-->'PAUSE'
+[INFO] [WallTime: 1375279362.682030] State machine transitioning 'PAUSE':'succeeded'-->'TOPIC_STATE'
+x: -7.582914
+y: -22.474414
+z: 15.336706
+s: 0.0
+l: 0.0
+u: 0.0
+r: -0.436332312999
+b: 0.349065850399
+t: -3.40339204139
+[INFO] [WallTime: 1375279362.701818] State machine transitioning 'TOPIC_STATE':'succeeded'-->'counter'
+[INFO] [WallTime: 1375279362.711011] State machine transitioning 'counter':'succeeded'-->'pick_joints'
+s: 0.0
+l: 0.0
+u: 0.0
+r: -2.53072741539
+b: 1.3962634016
+t: -3.40339204139
+[INFO] [WallTime: 1375279362.721181] State machine transitioning 'pick_joints':'succeeded'-->'GOTO'
+[INFO] [WallTime: 1375279362.730672] State machine starting in initial state 'PLAN' with userdata: 
+	['trajectory', 'error', 'robot', 'goal']
+[INFO] [WallTime: 1375279362.802023] State machine transitioning 'PLAN':'succeeded'-->'VISUALIZE'
+[INFO] [WallTime: 1375279370.137064] State machine transitioning 'VISUALIZE':'succeeded'-->'EXECUTE'
+[INFO] [WallTime: 1375279381.159134] State machine terminating 'EXECUTE':'succeeded':'succeeded'
+[INFO] [WallTime: 1375279381.159738] State machine transitioning 'GOTO':'succeeded'-->'PAUSE'
+[INFO] [WallTime: 1375279386.179615] State machine transitioning 'PAUSE':'succeeded'-->'TOPIC_STATE'
+x: -36.285362
+y: -15.554377
+z: -8.496224
+s: 0.0
+l: 0.0
+u: 0.0
+r: -2.53072741539
+b: 1.3962634016
+t: -3.40339204139
+[INFO] [WallTime: 1375279386.204900] State machine transitioning 'TOPIC_STATE':'succeeded'-->'counter'
+[INFO] [WallTime: 1375279386.222344] State machine transitioning 'counter':'succeeded'-->'pick_joints'
+s: 0.0
+l: 0.0
+u: 0.0
+r: -1.4835298642
+b: 1.3962634016
+t: -3.40339204139
+[INFO] [WallTime: 1375279386.244021] State machine transitioning 'pick_joints':'succeeded'-->'GOTO'
+[INFO] [WallTime: 1375279386.267969] State machine starting in initial state 'PLAN' with userdata: 
+	['trajectory', 'error', 'robot', 'goal']
+[INFO] [WallTime: 1375279386.339557] State machine transitioning 'PLAN':'succeeded'-->'VISUALIZE'
+[INFO] [WallTime: 1375279390.881538] State machine transitioning 'VISUALIZE':'succeeded'-->'EXECUTE'
+[INFO] [WallTime: 1375279397.522971] State machine terminating 'EXECUTE':'succeeded':'succeeded'
+[INFO] [WallTime: 1375279397.523549] State machine transitioning 'GOTO':'succeeded'-->'PAUSE'
+[INFO] [WallTime: 1375279402.546076] State machine transitioning 'PAUSE':'succeeded'-->'TOPIC_STATE'
+x: -21.959668
+y: -37.32729
+z: -4.608233
+s: 0.0
+l: 0.0
+u: 0.0
+r: -1.4835298642
+b: 1.3962634016
+t: -3.40339204139
+[INFO] [WallTime: 1375279402.560156] State machine transitioning 'TOPIC_STATE':'succeeded'-->'counter'
+[INFO] [WallTime: 1375279402.570885] State machine transitioning 'counter':'succeeded'-->'pick_joints'
+s: 0.0
+l: 0.0
+u: 0.0
+r: -0.436332312999
+b: 1.3962634016
+t: -3.40339204139
+[INFO] [WallTime: 1375279402.581691] State machine transitioning 'pick_joints':'succeeded'-->'GOTO'
+[INFO] [WallTime: 1375279402.593473] State machine starting in initial state 'PLAN' with userdata: 
+	['trajectory', 'error', 'robot', 'goal']
+[INFO] [WallTime: 1375279402.664088] State machine transitioning 'PLAN':'succeeded'-->'VISUALIZE'
+[INFO] [WallTime: 1375279407.200417] State machine transitioning 'VISUALIZE':'succeeded'-->'EXECUTE'
+[INFO] [WallTime: 1375279413.930575] State machine terminating 'EXECUTE':'succeeded':'succeeded'
+[INFO] [WallTime: 1375279413.930867] State machine transitioning 'GOTO':'succeeded'-->'PAUSE'
+[INFO] [WallTime: 1375279418.944442] State machine transitioning 'PAUSE':'succeeded'-->'TOPIC_STATE'
+x: 4.071537
+y: -34.528753
+z: -2.379307
+s: 0.0
+l: 0.0
+u: 0.0
+r: -0.436332312999
+b: 1.3962634016
+t: -3.40339204139
+[INFO] [WallTime: 1375279418.961607] State machine transitioning 'TOPIC_STATE':'succeeded'-->'counter'
+[INFO] [WallTime: 1375279418.970650] State machine transitioning 'counter':'succeeded'-->'pick_joints'
+s: 0.0
+l: 0.0
+u: 0.0
+r: -2.53072741539
+b: -0.698131700798
+t: -2.35619449019
+[INFO] [WallTime: 1375279418.979676] State machine transitioning 'pick_joints':'succeeded'-->'GOTO'
+[INFO] [WallTime: 1375279418.989685] State machine starting in initial state 'PLAN' with userdata: 
+	['trajectory', 'error', 'robot', 'goal']
+[INFO] [WallTime: 1375279419.079514] State machine transitioning 'PLAN':'succeeded'-->'VISUALIZE'
+[INFO] [WallTime: 1375279426.406742] State machine transitioning 'VISUALIZE':'succeeded'-->'EXECUTE'
+[INFO] [WallTime: 1375279437.434625] State machine terminating 'EXECUTE':'succeeded':'succeeded'
+[INFO] [WallTime: 1375279437.435158] State machine transitioning 'GOTO':'succeeded'-->'PAUSE'
+[INFO] [WallTime: 1375279442.458854] State machine transitioning 'PAUSE':'succeeded'-->'TOPIC_STATE'
+x: -33.232414
+y: -18.261885
+z: -18.858933
+s: 0.0
+l: 0.0
+u: 0.0
+r: -2.53072741539
+b: -0.698131700798
+t: -2.35619449019
+[INFO] [WallTime: 1375279442.476113] State machine transitioning 'TOPIC_STATE':'succeeded'-->'counter'
+[INFO] [WallTime: 1375279442.493318] State machine transitioning 'counter':'succeeded'-->'pick_joints'
+s: 0.0
+l: 0.0
+u: 0.0
+r: -1.4835298642
+b: -0.698131700798
+t: -2.35619449019
+[INFO] [WallTime: 1375279442.510223] State machine transitioning 'pick_joints':'succeeded'-->'GOTO'
+[INFO] [WallTime: 1375279442.527543] State machine starting in initial state 'PLAN' with userdata: 
+	['trajectory', 'error', 'robot', 'goal']
+[INFO] [WallTime: 1375279442.588243] State machine transitioning 'PLAN':'succeeded'-->'VISUALIZE'
+[INFO] [WallTime: 1375279447.131013] State machine transitioning 'VISUALIZE':'succeeded'-->'EXECUTE'
+[INFO] [WallTime: 1375279453.794591] State machine terminating 'EXECUTE':'succeeded':'succeeded'
+[INFO] [WallTime: 1375279453.794887] State machine transitioning 'GOTO':'succeeded'-->'PAUSE'
+[INFO] [WallTime: 1375279458.808756] State machine transitioning 'PAUSE':'succeeded'-->'TOPIC_STATE'
+x: -33.186413
+y: -0.498509
+z: -0.746388
+s: 0.0
+l: 0.0
+u: 0.0
+r: -1.4835298642
+b: -0.698131700798
+t: -2.35619449019
+[INFO] [WallTime: 1375279458.820259] State machine transitioning 'TOPIC_STATE':'succeeded'-->'counter'
+[INFO] [WallTime: 1375279458.830362] State machine transitioning 'counter':'succeeded'-->'pick_joints'
+s: 0.0
+l: 0.0
+u: 0.0
+r: -0.436332312999
+b: -0.698131700798
+t: -2.35619449019
+[INFO] [WallTime: 1375279458.840315] State machine transitioning 'pick_joints':'succeeded'-->'GOTO'
+[INFO] [WallTime: 1375279458.849479] State machine starting in initial state 'PLAN' with userdata: 
+	['trajectory', 'error', 'robot', 'goal']
+[INFO] [WallTime: 1375279458.896986] State machine transitioning 'PLAN':'succeeded'-->'VISUALIZE'
+[INFO] [WallTime: 1375279463.427562] State machine transitioning 'VISUALIZE':'succeeded'-->'EXECUTE'
+[INFO] [WallTime: 1375279470.234675] State machine terminating 'EXECUTE':'succeeded':'succeeded'
+[INFO] [WallTime: 1375279470.234977] State machine transitioning 'GOTO':'succeeded'-->'PAUSE'
+[INFO] [WallTime: 1375279475.251326] State machine transitioning 'PAUSE':'succeeded'-->'TOPIC_STATE'
+x: -10.787447
+y: 4.883944
+z: 12.786044
+s: 0.0
+l: 0.0
+u: 0.0
+r: -0.436332312999
+b: -0.698131700798
+t: -2.35619449019
+[INFO] [WallTime: 1375279475.263386] State machine transitioning 'TOPIC_STATE':'succeeded'-->'counter'
+[INFO] [WallTime: 1375279475.272615] State machine transitioning 'counter':'succeeded'-->'pick_joints'
+s: 0.0
+l: 0.0
+u: 0.0
+r: -2.53072741539
+b: 0.349065850399
+t: -2.35619449019
+[INFO] [WallTime: 1375279475.283447] State machine transitioning 'pick_joints':'succeeded'-->'GOTO'
+[INFO] [WallTime: 1375279475.295141] State machine starting in initial state 'PLAN' with userdata: 
+	['trajectory', 'error', 'robot', 'goal']
+[INFO] [WallTime: 1375279475.360536] State machine transitioning 'PLAN':'succeeded'-->'VISUALIZE'
+[INFO] [WallTime: 1375279482.664925] State machine transitioning 'VISUALIZE':'succeeded'-->'EXECUTE'
+[INFO] [WallTime: 1375279493.718831] State machine terminating 'EXECUTE':'succeeded':'succeeded'
+[INFO] [WallTime: 1375279493.719259] State machine transitioning 'GOTO':'succeeded'-->'PAUSE'
+[INFO] [WallTime: 1375279498.753791] State machine transitioning 'PAUSE':'succeeded'-->'TOPIC_STATE'
+x: -29.114545
+y: -2.060518
+z: -21.019832
+s: 0.0
+l: 0.0
+u: 0.0
+r: -2.53072741539
+b: 0.349065850399
+t: -2.35619449019
+[INFO] [WallTime: 1375279498.778831] State machine transitioning 'TOPIC_STATE':'succeeded'-->'counter'
+[INFO] [WallTime: 1375279498.794891] State machine transitioning 'counter':'succeeded'-->'pick_joints'
+s: 0.0
+l: 0.0
+u: 0.0
+r: -1.4835298642
+b: 0.349065850399
+t: -2.35619449019
+[INFO] [WallTime: 1375279498.809906] State machine transitioning 'pick_joints':'succeeded'-->'GOTO'
+[INFO] [WallTime: 1375279498.829864] State machine starting in initial state 'PLAN' with userdata: 
+	['trajectory', 'error', 'robot', 'goal']
+[INFO] [WallTime: 1375279498.874830] State machine transitioning 'PLAN':'succeeded'-->'VISUALIZE'
+[INFO] [WallTime: 1375279503.409723] State machine transitioning 'VISUALIZE':'succeeded'-->'EXECUTE'
+[INFO] [WallTime: 1375279510.117951] State machine terminating 'EXECUTE':'succeeded':'succeeded'
+[INFO] [WallTime: 1375279510.118401] State machine transitioning 'GOTO':'succeeded'-->'PAUSE'
+[INFO] [WallTime: 1375279515.140906] State machine transitioning 'PAUSE':'succeeded'-->'TOPIC_STATE'
+x: -35.53056
+y: -9.205502
+z: 1.673503
+s: 0.0
+l: 0.0
+u: 0.0
+r: -1.4835298642
+b: 0.349065850399
+t: -2.35619449019
+[INFO] [WallTime: 1375279515.151004] State machine transitioning 'TOPIC_STATE':'succeeded'-->'counter'
+[INFO] [WallTime: 1375279515.165156] State machine transitioning 'counter':'succeeded'-->'pick_joints'
+s: 0.0
+l: 0.0
+u: 0.0
+r: -0.436332312999
+b: 0.349065850399
+t: -2.35619449019
+[INFO] [WallTime: 1375279515.177513] State machine transitioning 'pick_joints':'succeeded'-->'GOTO'
+[INFO] [WallTime: 1375279515.190318] State machine starting in initial state 'PLAN' with userdata: 
+	['trajectory', 'error', 'robot', 'goal']
+[INFO] [WallTime: 1375279515.263046] State machine transitioning 'PLAN':'succeeded'-->'VISUALIZE'
+[INFO] [WallTime: 1375279519.801226] State machine transitioning 'VISUALIZE':'succeeded'-->'EXECUTE'
+[INFO] [WallTime: 1375279526.466746] State machine terminating 'EXECUTE':'succeeded':'succeeded'
+[INFO] [WallTime: 1375279526.467044] State machine transitioning 'GOTO':'succeeded'-->'PAUSE'
+[INFO] [WallTime: 1375279531.479858] State machine transitioning 'PAUSE':'succeeded'-->'TOPIC_STATE'
+x: -17.398435
+y: -20.366069
+z: 16.054047
+s: 0.0
+l: 0.0
+u: 0.0
+r: -0.436332312999
+b: 0.349065850399
+t: -2.35619449019
+[INFO] [WallTime: 1375279531.490280] State machine transitioning 'TOPIC_STATE':'succeeded'-->'counter'
+[INFO] [WallTime: 1375279531.500669] State machine transitioning 'counter':'succeeded'-->'pick_joints'
+s: 0.0
+l: 0.0
+u: 0.0
+r: -2.53072741539
+b: 1.3962634016
+t: -2.35619449019
+[INFO] [WallTime: 1375279531.509719] State machine transitioning 'pick_joints':'succeeded'-->'GOTO'
+[INFO] [WallTime: 1375279531.519570] State machine starting in initial state 'PLAN' with userdata: 
+	['trajectory', 'error', 'robot', 'goal']
+[INFO] [WallTime: 1375279531.573020] State machine transitioning 'PLAN':'succeeded'-->'VISUALIZE'
+[INFO] [WallTime: 1375279538.877505] State machine transitioning 'VISUALIZE':'succeeded'-->'EXECUTE'
+[INFO] [WallTime: 1375279549.802702] State machine terminating 'EXECUTE':'succeeded':'succeeded'
+[INFO] [WallTime: 1375279549.803069] State machine transitioning 'GOTO':'succeeded'-->'PAUSE'
+[INFO] [WallTime: 1375279554.823022] State machine transitioning 'PAUSE':'succeeded'-->'TOPIC_STATE'
+x: -26.237348
+y: 9.004505
+z: -8.723972
+s: 0.0
+l: 0.0
+u: 0.0
+r: -2.53072741539
+b: 1.3962634016
+t: -2.35619449019
+[INFO] [WallTime: 1375279554.842420] State machine transitioning 'TOPIC_STATE':'succeeded'-->'counter'
+[INFO] [WallTime: 1375279554.858615] State machine transitioning 'counter':'succeeded'-->'pick_joints'
+s: 0.0
+l: 0.0
+u: 0.0
+r: -1.4835298642
+b: 1.3962634016
+t: -2.35619449019
+[INFO] [WallTime: 1375279554.876421] State machine transitioning 'pick_joints':'succeeded'-->'GOTO'
+[INFO] [WallTime: 1375279554.897956] State machine starting in initial state 'PLAN' with userdata: 
+	['trajectory', 'error', 'robot', 'goal']
+[INFO] [WallTime: 1375279554.941413] State machine transitioning 'PLAN':'succeeded'-->'VISUALIZE'
+[INFO] [WallTime: 1375279559.472046] State machine transitioning 'VISUALIZE':'succeeded'-->'EXECUTE'
+[INFO] [WallTime: 1375279566.154899] State machine terminating 'EXECUTE':'succeeded':'succeeded'
+[INFO] [WallTime: 1375279566.155340] State machine transitioning 'GOTO':'succeeded'-->'PAUSE'
+[INFO] [WallTime: 1375279571.182056] State machine transitioning 'PAUSE':'succeeded'-->'TOPIC_STATE'
+x: -36.834608
+y: -15.330753
+z: -4.686792
+s: 0.0
+l: 0.0
+u: 0.0
+r: -1.4835298642
+b: 1.3962634016
+t: -2.35619449019
+[INFO] [WallTime: 1375279571.210435] State machine transitioning 'TOPIC_STATE':'succeeded'-->'counter'
+[INFO] [WallTime: 1375279571.229016] State machine transitioning 'counter':'succeeded'-->'pick_joints'
+s: 0.0
+l: 0.0
+u: 0.0
+r: -0.436332312999
+b: 1.3962634016
+t: -2.35619449019
+[INFO] [WallTime: 1375279571.247561] State machine transitioning 'pick_joints':'succeeded'-->'GOTO'
+[INFO] [WallTime: 1375279571.267366] State machine starting in initial state 'PLAN' with userdata: 
+	['trajectory', 'error', 'robot', 'goal']
+[INFO] [WallTime: 1375279571.343758] State machine transitioning 'PLAN':'succeeded'-->'VISUALIZE'
+[INFO] [WallTime: 1375279575.889314] State machine transitioning 'VISUALIZE':'succeeded'-->'EXECUTE'
+[INFO] [WallTime: 1375279582.538961] State machine terminating 'EXECUTE':'succeeded':'succeeded'
+[INFO] [WallTime: 1375279582.539482] State machine transitioning 'GOTO':'succeeded'-->'PAUSE'
+[INFO] [WallTime: 1375279587.560157] State machine transitioning 'PAUSE':'succeeded'-->'TOPIC_STATE'
+x: -21.771566
+y: -36.983198
+z: -1.75178
+s: 0.0
+l: 0.0
+u: 0.0
+r: -0.436332312999
+b: 1.3962634016
+t: -2.35619449019
+[INFO] [WallTime: 1375279587.580301] State machine transitioning 'TOPIC_STATE':'succeeded'-->'counter'
+[INFO] [WallTime: 1375279587.589295] State machine transitioning 'counter':'aborted'-->'POWER_OFF'
+[INFO] [WallTime: 1375279587.602684] State machine terminating 'POWER_OFF':'succeeded':'succeeded'
